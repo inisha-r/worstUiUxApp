@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Worst UI/UX App 😈</title>
+    <title>🔥 WORST UI/UX EVER 🔥</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(45deg, red, yellow, blue);
-            font-family: "Comic Sans MS", cursive;
+            background: black;
+            color: white;
+            font-family: 'Poppins', sans-serif;
             text-align: center;
             overflow: hidden;
-            animation: flash 0.3s infinite alternate;
+            animation: glitch 0.3s infinite alternate;
         }
-        @keyframes flash {
-            from { background-color: lime; }
-            to { background-color: purple; }
+        @keyframes glitch {
+            from { background-color: #121212; }
+            to { background-color: #1f1f1f; }
         }
         .moving-button {
             position: absolute;
-            background-color: purple;
+            background-color: crimson;
             color: white;
             border: none;
             padding: 10px;
@@ -26,13 +28,15 @@
         }
         .confusing-form input, .confusing-form textarea {
             width: 60%;
-            background-color: lightyellow;
+            background-color: darkgray;
+            color: black;
+            transition: transform 0.2s ease-in-out;
         }
         .scrolling-text {
             position: absolute;
             white-space: nowrap;
             width: 200%;
-            animation: scroll 5s linear infinite;
+            animation: scroll 4s linear infinite;
         }
         @keyframes scroll {
             from { transform: translateX(100%); }
@@ -43,38 +47,42 @@
             font-weight: bold;
             color: red;
         }
+        .shaking {
+            animation: shake 0.2s infinite;
+        }
+        @keyframes shake {
+            0% { transform: translateX(2px); }
+            50% { transform: translateX(-2px); }
+            100% { transform: translateX(2px); }
+        }
     </style>
 </head>
 <body>
 
-    <h1>Welcome to UX Hell 😈</h1>
+    <h1 class="shaking">Welcome to the WORST EXPERIENCE EVER 😈</h1>
 
     <div class="scrolling-text">
-        WARNING! THIS SITE IS AWFUL! 🚨 WARNING! THIS SITE IS AWFUL! 🚨 WARNING! THIS SITE IS AWFUL! 🚨
+        ERROR! THIS SITE IS BROKEN! 🚨 ERROR! THIS SITE IS BROKEN! 🚨 ERROR! THIS SITE IS BROKEN! 🚨
     </div>
 
     <button class="moving-button" onclick="showAlert()">Click Me (If You Can)</button>
 
     <form class="confusing-form" onsubmit="return fakeSubmit(event)">
-        <label>Username (actually, enter your email):</label><br>
+        <label id="label1">Username (actually, enter your email):</label><br>
         <input type="text" id="email"><br><br>
 
-        <label>Email (actually, enter your name):</label><br>
+        <label id="label2">Email (actually, enter your name):</label><br>
         <input type="text" id="name"><br><br>
-
-        <label>Message (resets every 3 characters):</label><br>
-        <textarea id="message"></textarea><br><br>
 
         <label class="captcha">Captcha: Solve <span id="captcha-text">999 + 1</span></label><br>
         <input type="text" id="captcha"><br><br>
 
-        <button type="submit">Submit (will probably fail)</button>
+        <button id="submit-btn" type="submit">Submit (probably won't work)</button>
     </form>
 
     <script>
         function showAlert() {
-            alert("You clicked me... after 5 tries!");
-            playAnnoyingSound();
+            setTimeout(() => alert("⚠️ SYSTEM WARNING: Virus detected! Click OK to ignore."), 5000);
         }
 
         function playAnnoyingSound() {
@@ -82,46 +90,58 @@
             audio.play();
         }
 
-        // Make the button move randomly
+        // Make the button move randomly and disappear sometimes
         document.querySelector(".moving-button").addEventListener("mouseover", function () {
             this.style.top = Math.random() * 90 + "vh";
             this.style.left = Math.random() * 90 + "vw";
             if (Math.random() > 0.5) {
-                this.style.display = "none"; // Sometimes disappears
-                setTimeout(() => this.style.display = "block", 2000);
+                this.style.display = "none";
+                setTimeout(() => this.style.display = "block", 3000);
             }
         });
 
         // Fake form submission with random failures
         function fakeSubmit(event) {
             event.preventDefault();
-            alert("Error: Please try again later.");
+            alert("Oops! Something went wrong. Try again.");
+            document.querySelector("#submit-btn").style.position = "absolute";
+            document.querySelector("#submit-btn").style.top = Math.random() * 90 + "vh";
+            document.querySelector("#submit-btn").style.left = Math.random() * 90 + "vw";
             return false;
         }
 
-        // Form resets after 5 seconds of inactivity
-        let timeout;
-        document.querySelector(".confusing-form").addEventListener("input", () => {
-            clearTimeout(timeout);
-            timeout = setTimeout(() => document.querySelector(".confusing-form").reset(), 5000);
-        });
-
         // Random alert every 7 seconds
         setInterval(() => {
-            alert("🚨 ALERT: Something went wrong, but we won't tell you what.");
+            alert("🚨 SYSTEM ERROR: Contact Support.");
         }, 7000);
 
-        // Random cursor movement effect
-        document.addEventListener("mousemove", function (e) {
-            if (Math.random() > 0.9) {
-                window.scrollBy(Math.random() * 100 - 50, Math.random() * 100 - 50);
-            }
-        });
+        // Swap input field labels randomly
+        setInterval(() => {
+            let label1 = document.getElementById("label1").textContent;
+            let label2 = document.getElementById("label2").textContent;
+            document.getElementById("label1").textContent = label2;
+            document.getElementById("label2").textContent = label1;
+        }, 5000);
 
-        // Impossible Captcha (changes randomly)
+        // Impossible Captcha (changes every 3 seconds)
         setInterval(() => {
             document.getElementById("captcha-text").textContent = Math.floor(Math.random() * 900) + " + " + Math.floor(Math.random() * 100);
-        }, 3000);
+        }, 2000);
+
+        // Random page zooming effect
+        setInterval(() => {
+            document.body.style.zoom = Math.random() * 2;
+        }, 5000);
+
+        // Cursor randomly disappears
+        setInterval(() => {
+            document.body.style.cursor = (Math.random() > 0.5) ? "none" : "default";
+        }, 4000);
+
+        // Buttons randomly click themselves
+        setInterval(() => {
+            document.querySelector("#submit-btn").click();
+        }, 10000);
     </script>
 
 </body>
